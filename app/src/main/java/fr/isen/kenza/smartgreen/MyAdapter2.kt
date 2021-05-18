@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 class MyAdapter2(private val humList: ArrayList<Humidity>) : RecyclerView.Adapter<MyAdapter2.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_temperature, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_humidity, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
