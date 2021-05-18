@@ -1,5 +1,6 @@
 package fr.isen.kenza.smartgreen
 
+import android.R
 import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -11,7 +12,10 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.installations.Utils
 import fr.isen.kenza.smartgreen.databinding.ActivityTemperatureBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class TemperatureActivity : AppCompatActivity(), SensorEventListener {
@@ -37,7 +41,6 @@ class TemperatureActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTemperatureBinding.inflate(layoutInflater)
@@ -57,6 +60,7 @@ class TemperatureActivity : AppCompatActivity(), SensorEventListener {
         temps.add(Temp("Temperature Reading ", event.values[0].toFloat()))
         binding.recyclerView1.adapter =  MyAdapter1(temps)
     }
+
 
 
     override fun onResume() {
