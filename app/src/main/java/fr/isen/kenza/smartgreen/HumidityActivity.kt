@@ -56,9 +56,9 @@ class HumidityActivity : AppCompatActivity(), SensorEventListener {
     fun getTemperatureSensor(event: SensorEvent) {
         binding.recyclerView2.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
-        val temps = ArrayList<Temp>()
-        temps.add(Temp("Humidity Reading ", event.values[0].toFloat()))
-        binding.recyclerView2.adapter =  MyAdapter1(temps)
+        val temps = ArrayList<Humidity>()
+        temps.add(Humidity("Humidity Reading ", event.values[0].toFloat()))
+        binding.recyclerView2.adapter =  MyAdapter2(temps)
     }
 
 
