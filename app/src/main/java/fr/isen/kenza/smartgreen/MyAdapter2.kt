@@ -16,7 +16,6 @@ class MyAdapter2(private val humList: ArrayList<Humidity>) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindItems(humList[position])
     }
-
     override fun getItemCount(): Int {
         return humList.size
     }
