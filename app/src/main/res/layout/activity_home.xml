@@ -19,7 +19,7 @@
 
     <Button
         android:id="@+id/buttonBle"
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView3"
         android:layout_centerInParent="true"
@@ -28,7 +28,7 @@
 
     <Button
         android:id="@+id/buttonPlant"
-        android:layout_width="121dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonBle"
         android:layout_centerInParent="true"
@@ -37,7 +37,7 @@
 
     <Button
         android:id="@+id/buttonAutom"
-        android:layout_width="121dp"
+        android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonPlant"
         android:layout_centerInParent="true"

@@ -3,12 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layoutPlant"
-    android:layout_marginTop="30dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-
-
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp">
 
 
     <ImageView
@@ -23,6 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/home_plant" />
 
     <TextView
@@ -50,6 +48,4 @@
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/catagoryImage"
         app:layout_constraintTop_toBottomOf="@+id/plantName" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

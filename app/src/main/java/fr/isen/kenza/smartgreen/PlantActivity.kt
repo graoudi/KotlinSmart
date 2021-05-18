@@ -1,11 +1,10 @@
 package fr.isen.kenza.smartgreen
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import fr.isen.kenza.smartgreen.databinding.ActivityHomeBinding
 import fr.isen.kenza.smartgreen.databinding.ActivityPlantBinding
 
 class PlantActivity : AppCompatActivity() {
@@ -13,15 +12,26 @@ class PlantActivity : AppCompatActivity() {
     lateinit var adapter: RecyclerView_Adapter
     private var titlesList = mutableListOf<String>()
     private var descList = mutableListOf<String>()
+    private var detailHum = mutableListOf<String>()
+
     private var imagesList = mutableListOf<Int>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlantBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.PlantrecyclerView.layoutManager = LinearLayoutManager(this)
-        binding.PlantrecyclerView.adapter=  PlantAdapter(titlesList, descList, imagesList)
+        binding.PlantrecyclerView.adapter=  PlantAdapter(titlesList, descList, imagesList){
+            val intent = Intent(this, NeedActivity::class.java)
+            startActivity(intent)
+        }
 
         postToList()
+/*
+        binding.PlantrecyclerView.setOnClickListener{
+            val intent = Intent(this, NeedActivity::class.java)
+            startActivity(intent)
+        }
+*/
 
 
     }
@@ -30,6 +40,7 @@ class PlantActivity : AppCompatActivity() {
         titlesList.add(title)
         descList.add(description)
         imagesList.add((image))
+       // detailHum.add(detail)
 
 
         binding.searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
@@ -48,14 +59,17 @@ class PlantActivity : AppCompatActivity() {
 
 
 
+
     }
 
     private fun postToList(){
 
         addToList("Rose", "Exposition : Lumière ambiante du soleil mais indirecte.",
             R.drawable.rose)
+
         addToList("Aloe Vera", "L’entretien de l’aloé vera doit être régulier mais modéré : pensez à arroser 1 fois par semaine environ, surtout lorsque le sol est sec en surface. ",
             R.drawable.aloevera)
+
         addToList("Anthurium", "La température d’une maison ou d’un appartement est idéal car elle doit être comprise en 18 et 21° toute l’année.",
             R.drawable.anthurium)
         addToList("Cactus",  "Arrosez uniquement votre cactée si le terreau est sec..",
@@ -92,5 +106,9 @@ class PlantActivity : AppCompatActivity() {
             R.drawable.camelia)
         addToList("Pivoine", "Les pivoines n’ont pas besoin d’un arrosage trop important. En revanche, en période de sécheresse, où les températures sont particulièrement hautes, il convient de leur apporter de l’eau pour que le sol soit humide.",
             R.drawable.pivoine)
+
+
     }
+
+
 }

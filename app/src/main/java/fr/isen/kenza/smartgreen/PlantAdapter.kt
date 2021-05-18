@@ -7,8 +7,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import fr.isen.kenza.smartgreen.databinding.PlantadapterBinding
 
-class PlantAdapter (private var titles: List<String>,
-private var details : List<String>, private var images: List<Int>)
+class PlantAdapter(private var titles: List<String>,
+                   private var details: List<String>, private var images: List<Int>,private val listener: (List<Int>) -> Unit
+
+)
+
     :RecyclerView.Adapter<PlantAdapter.ViewHolder>(){
 
 
@@ -26,12 +29,21 @@ private var details : List<String>, private var images: List<Int>)
     val itemTitle: TextView = itemView.plantName
         val itemDetail: TextView= itemView.plantDetail
         val itemPicture: ImageView = itemView.catagoryImage
+       // val detail: TextView= itemView.hum
+        val layoutPlant = itemView.layoutPlant
+
+
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     holder.itemTitle.text = titles[position]
         holder.itemDetail.text = details[position]
+        //holder.detail.text = detailHum[position]
         holder.itemPicture.setImageResource(images[position])
-
+        holder.layoutPlant.setOnClickListener { listener.invoke(listOf(images[position])) }
     }
+
+
+
+
 }
