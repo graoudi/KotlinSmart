@@ -33,26 +33,10 @@ class TemperatureActivity : AppCompatActivity(), SensorEventListener {
 
         if (event?.sensor?.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
             val temperature = event.values[0]
-            val absoluteHumidity: Float =
-                calculateAbsoluteHumidity(temperature, mLastKnownRelativeHumidity)
-            binding.test.setText("The absolute humidity at temperature: $temperature is: $absoluteHumidity")
 
         }
     }
-    fun calculateAbsoluteHumidity(
-        temperature: Float,
-        relativeHumidity: Float
-    ): Float {
-        var Dv = 0f
-        val m = 17.62f
-        val Tn = 243.12f
-        val Ta = 216.7f
-        val A = 6.112f
-        val K = 273.15f
-        Dv =
-            (Ta * (relativeHumidity / 100) * A * Math.exp(m * temperature / (Tn + temperature).toDouble()) / (K + temperature)).toFloat()
-        return Dv
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +45,12 @@ class TemperatureActivity : AppCompatActivity(), SensorEventListener {
         setContentView(binding.root)
 
         sensorManager = (getSystemService(Context.SENSOR_SERVICE) as SensorManager?)!!
-        tempSensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)
+
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.ICE_CREAM_SANDWICH){
+            tempSensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)        }
+        if (tempSensor == null) {
+           // temperaturelabel.setText(NOT_SUPPORTED_MESSAGE);
+        }
     }
 
 
