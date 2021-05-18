@@ -1,5 +1,6 @@
 package fr.isen.kenza.smartgreen
 
+import android.R
 import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -11,7 +12,10 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.installations.Utils
 import fr.isen.kenza.smartgreen.databinding.ActivityTemperatureBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class TemperatureActivity : AppCompatActivity(), SensorEventListener {
@@ -29,29 +33,12 @@ class TemperatureActivity : AppCompatActivity(), SensorEventListener {
     override fun onSensorChanged(event: SensorEvent?) {
 
 
-        binding.absolutehumiditytext.text = mAbsoluteHumidityValue?.text
+
+
 
         if (event?.sensor?.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
-            val temperature = event.values[0]
-            val absoluteHumidity: Float =
-                calculateAbsoluteHumidity(temperature, mLastKnownRelativeHumidity)
-            binding.test.setText("The absolute humidity at temperature: $temperature is: $absoluteHumidity")
-
+            getTemperatureSensor(event)
         }
-    }
-    fun calculateAbsoluteHumidity(
-        temperature: Float,
-        relativeHumidity: Float
-    ): Float {
-        var Dv = 0f
-        val m = 17.62f
-        val Tn = 243.12f
-        val Ta = 216.7f
-        val A = 6.112f
-        val K = 273.15f
-        Dv =
-            (Ta * (relativeHumidity / 100) * A * Math.exp(m * temperature / (Tn + temperature).toDouble()) / (K + temperature)).toFloat()
-        return Dv
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,12 +54,14 @@ class TemperatureActivity : AppCompatActivity(), SensorEventListener {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
      fun getTemperatureSensor(event: SensorEvent) {
-        //binding.test.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerView1.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         val temps = ArrayList<Temp>()
         temps.add(Temp("Temperature Reading ", event.values[0].toFloat()))
-        binding.test.text = MyAdapter1(temps).toString()
+        binding.recyclerView1.adapter =  MyAdapter1(temps)
     }
+
+
 
     override fun onResume() {
         super.onResume()
