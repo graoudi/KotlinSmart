@@ -23,7 +23,7 @@ class AutomaticActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.humidity.setOnClickListener {
-            val intent = Intent(this, SensorActivity::class.java)
+            val intent = Intent(this, HumidityActivity::class.java)
             startActivity(intent)
         }
 
