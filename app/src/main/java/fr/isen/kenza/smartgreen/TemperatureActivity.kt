@@ -29,11 +29,11 @@ class TemperatureActivity : AppCompatActivity(), SensorEventListener {
     override fun onSensorChanged(event: SensorEvent?) {
 
 
-        binding.absolutehumiditytext.text = mAbsoluteHumidityValue?.text
+
+
 
         if (event?.sensor?.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
-            val temperature = event.values[0]
-
+            getTemperatureSensor(event)
         }
     }
 
@@ -45,23 +45,19 @@ class TemperatureActivity : AppCompatActivity(), SensorEventListener {
         setContentView(binding.root)
 
         sensorManager = (getSystemService(Context.SENSOR_SERVICE) as SensorManager?)!!
-
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.ICE_CREAM_SANDWICH){
-            tempSensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)        }
-        if (tempSensor == null) {
-           // temperaturelabel.setText(NOT_SUPPORTED_MESSAGE);
-        }
+        tempSensor = sensorManager!!.getDefaultSensor(Sensor.TYPE_AMBIENT_TEMPERATURE)
     }
 
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
      fun getTemperatureSensor(event: SensorEvent) {
-        //binding.test.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerView1.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         val temps = ArrayList<Temp>()
         temps.add(Temp("Temperature Reading ", event.values[0].toFloat()))
-        binding.test.text = MyAdapter1(temps).toString()
+        binding.recyclerView1.adapter =  MyAdapter1(temps)
     }
+
 
     override fun onResume() {
         super.onResume()
