@@ -4,4 +4,13 @@
     <string name="ble_scan_pause_title">Lancez le scan..</string>
     <string name="ble_scan_play_title">recherche..</string>
     <string name="ble_playground">BLUETOOTH</string>
+    <string name="nomParent" />
+    <string name="caracteristique_specifique">Caractéristique spécifique</string>
+    <string name="UUID">UUID</string>
+    <string name="LECTURE">Lecture</string>
+    <string name="ECRITURE">Ecrire</string>
+    <string name="NOTIFIER">Notifier</string>
+    <string name="Properties">Propriétés</string>
+    <string name="Values">Valeurs</string>
+    <string name="statusBle">statusBle</string>
 </resources>

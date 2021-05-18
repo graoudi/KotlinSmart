@@ -26,7 +26,6 @@ class BleScanAdapter
         return listBle.size
     }
 
-
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onBindViewHolder(holder: BleViewHolder, position: Int) {
         holder.textTitle.text = listBle[position].device.toString()
@@ -39,9 +38,6 @@ class BleScanAdapter
 
     }
 
-
-
-
     class BleViewHolder(bleBinding: CellBleDevicesBinding) : RecyclerView.ViewHolder(bleBinding.root){
         val textTitle: TextView = itemView.findViewById(R.id.adressDevice)
         val nameTitle: TextView = itemView.findViewById(R.id.nameDevice)
@@ -49,7 +45,6 @@ class BleScanAdapter
         val layoutBle = itemView.findViewById<View>(R.id.cellBluetooth)
 
     }
-
 
     fun addDevice(data: ScanResult) {
         if (!listBle.contains(data)) {

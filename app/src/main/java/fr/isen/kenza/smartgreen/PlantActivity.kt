@@ -66,7 +66,6 @@ class PlantActivity : AppCompatActivity() {
             R.drawable.rose)
         addToList("Orchidee", "La température adéquate pour les orchidées est comprise entre 20 et 25° C. Il faudra arroser l’orchidée environ 1 fois tous les 10 jours en période de floraison et tous les 20 jours environ quand l’orchidée est défleurie. ",
             R.drawable.orchidee)
-
         addToList("Basilic", "Choisissez un endroit lumineux et ensoleillé, le bord d'une fenêtre par exemple. Arrosez dès que le sol est sec.",
             R.drawable.basilic)
         addToList("Romarin", "Offrez-lui une exposition lumineuse et chaude. Abritez-le des vents froids. Installez-le plein sud ou sud-ouest. Le romarin est sobre. L'arrosage n'est utile qu'à la plantation et l'été qui suit. Il se contentera de la pluie les années suivantes.",
