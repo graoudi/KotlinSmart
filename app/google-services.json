@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "924509100221",
+    "project_id": "smartgreen-971ad",
+    "storage_bucket": "smartgreen-971ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924509100221:android:55d3cf85fc01f12f6effd4",
+        "android_client_info": {
+          "package_name": "fr.isen.kenza.smartgreen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "924509100221-23730u2okms6aupciafh310jfdoqhf4s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABC5FWBeVTXEsCFhHjQyP7MoA3KGRje34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "924509100221-23730u2okms6aupciafh310jfdoqhf4s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

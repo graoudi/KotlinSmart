@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/creerCompte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/aclonica"
+        android:text="CREER UN COMPTE"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/homeRegister" />
+
+    <TextView
+        android:id="@+id/mailRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="70dp"
+        android:text="Email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/creerCompte" />
+
+    <EditText
+        android:id="@+id/RegisterLoginEmail"
+        android:layout_width="250dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="48dp"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mailRegister"
+        app:layout_constraintTop_toBottomOf="@+id/creerCompte"
+        tools:text="abc@gmail.com" />
+
+    <TextView
+        android:id="@+id/passwordRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="48dp"
+        android:text="password"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mailRegister" />
+
+    <EditText
+        android:id="@+id/register_login_password"
+        android:layout_width="249dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="30dp"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/passwordRegister"
+        app:layout_constraintTop_toBottomOf="@+id/RegisterLoginEmail"
+        tools:ignore="MissingConstraints"
+        tools:text="1234" />
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="260dp"
+        android:layout_height="41dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="#31A92F"
+        android:foreground="?attr/selectableItemBackground"
+
+        android:text="Créer"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.629"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_login_password" />
+
+    <ImageView
+        android:id="@+id/homeRegister"
+        android:layout_width="143dp"
+        android:layout_height="141dp"
+        android:layout_marginStart="134dp"
+        android:layout_marginLeft="134dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginRight="134dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/home_plant" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
