@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.common.util.Strings
 
 class MyAdapter2(private val humList: ArrayList<Humidity>) : RecyclerView.Adapter<MyAdapter2.ViewHolder>() {
 
@@ -29,5 +30,5 @@ class MyAdapter2(private val humList: ArrayList<Humidity>) : RecyclerView.Adapte
         }
     }
 }
-class Humidity(val key: String, val value: Float) {
+class Humidity(val key: String, val value: String) {
 }

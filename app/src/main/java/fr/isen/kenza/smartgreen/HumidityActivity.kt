@@ -15,7 +15,6 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.installations.Utils
 import fr.isen.kenza.smartgreen.databinding.ActivityHumidityBinding
-import fr.isen.kenza.smartgreen.databinding.ActivityTemperatureBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -57,7 +56,7 @@ class HumidityActivity : AppCompatActivity(), SensorEventListener {
         binding.recyclerView2.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         val temps = ArrayList<Humidity>()
-        temps.add(Humidity("Humidity Reading ", event.values[0].toFloat()))
+        temps.add(Humidity("Humidity Reading ", event.values[0].toString()))
         binding.recyclerView2.adapter =  MyAdapter2(temps)
     }
 
