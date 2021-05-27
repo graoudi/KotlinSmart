@@ -15,7 +15,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //redirection vers le bon layout
-
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
