@@ -15,7 +15,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //redirection vers le bon layout
-        binding = fr.isen.kenza.smartgreen.databinding.ActivityLoginBinding.inflate(layoutInflater)
+
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.register.setOnClickListener{
