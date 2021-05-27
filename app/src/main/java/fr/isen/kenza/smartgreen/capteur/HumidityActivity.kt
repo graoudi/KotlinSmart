@@ -1,21 +1,19 @@
-package fr.isen.kenza.smartgreen
+package fr.isen.kenza.smartgreen.capteur
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-import android.R
 import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Build
-import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.installations.Utils
+import fr.isen.kenza.smartgreen.capteur.Humidity
+import fr.isen.kenza.smartgreen.capteur.MyAdapter2
 import fr.isen.kenza.smartgreen.databinding.ActivityHumidityBinding
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -31,12 +29,10 @@ class HumidityActivity : AppCompatActivity(), SensorEventListener {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onSensorChanged(event: SensorEvent?) {
 
-
-
-
+        //recupere l'humidite
 
         if (event?.sensor?.getType() == Sensor.TYPE_RELATIVE_HUMIDITY) {
-            getTemperatureSensor(event)
+            getHumSensor(event)
         }
     }
 
@@ -52,12 +48,12 @@ class HumidityActivity : AppCompatActivity(), SensorEventListener {
 
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    fun getTemperatureSensor(event: SensorEvent) {
+    fun getHumSensor(event: SensorEvent) {
         binding.recyclerView2.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
+//redirection vers l'adapter
         val temps = ArrayList<Humidity>()
         temps.add(Humidity("Humidity Reading ", event.values[0].toString()))
-        binding.recyclerView2.adapter =  MyAdapter2(temps)
+        binding.recyclerView2.adapter = MyAdapter2(temps)
     }
 
 

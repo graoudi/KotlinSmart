@@ -1,6 +1,5 @@
-package fr.isen.kenza.smartgreen
+package fr.isen.kenza.smartgreen.capteur
 
-import android.R
 import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorEvent
@@ -12,9 +11,9 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.installations.Utils
+import fr.isen.kenza.smartgreen.capteur.MyAdapter1
+import fr.isen.kenza.smartgreen.capteur.Temp
 import fr.isen.kenza.smartgreen.databinding.ActivityTemperatureBinding
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -34,7 +33,7 @@ class TemperatureActivity : AppCompatActivity(), SensorEventListener {
 
 
 
-
+//capteur de temperature
 
         if (event?.sensor?.getType() == Sensor.TYPE_AMBIENT_TEMPERATURE) {
             getTemperatureSensor(event)
@@ -58,7 +57,7 @@ class TemperatureActivity : AppCompatActivity(), SensorEventListener {
 
         val temps = ArrayList<Temp>()
         temps.add(Temp("Temperature Reading ", event.values[0].toFloat()))
-        binding.recyclerView1.adapter =  MyAdapter1(temps)
+        binding.recyclerView1.adapter = MyAdapter1(temps)
     }
 
 

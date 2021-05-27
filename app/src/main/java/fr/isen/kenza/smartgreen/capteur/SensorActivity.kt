@@ -1,4 +1,4 @@
-package fr.isen.kenza.smartgreen
+package fr.isen.kenza.smartgreen.capteur
 
 import android.content.Context
 import android.hardware.Sensor
@@ -10,7 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
-import fr.isen.kenza.smartgreen.databinding.ActivityHomeBinding
+import fr.isen.kenza.smartgreen.capteur.Light
+import fr.isen.kenza.smartgreen.capteur.MyAdapter
 import fr.isen.kenza.smartgreen.databinding.LightSensorBinding
 
 class SensorActivity : AppCompatActivity(), SensorEventListener {
@@ -23,6 +24,7 @@ class SensorActivity : AppCompatActivity(), SensorEventListener {
         override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
     }
 
+    //capteur de temperature
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onSensorChanged(event: SensorEvent?) {
 
@@ -48,7 +50,7 @@ class SensorActivity : AppCompatActivity(), SensorEventListener {
 
         val lights = ArrayList<Light>()
         lights.add(Light("Light Sensor Reading ", event.values[0].toString()))
-        binding.recyclerView.adapter =  MyAdapter(lights)
+        binding.recyclerView.adapter = MyAdapter(lights)
     }
 
 

@@ -14,18 +14,18 @@ import fr.isen.kenza.smartgreen.databinding.PlantadapterBinding
 import java.util.*
 import kotlin.collections.ArrayList
 
-
-class RecyclerView_Adapter(private var countryList: ArrayList<String>) :
+//adapter de la plante
+class RecyclerView_Adapter(private var pList: ArrayList<String>) :
     RecyclerView.Adapter<RecyclerView_Adapter.ViewHolder>(), Filterable {
 
-    var countryFilterList = ArrayList<String>()
+    var FilterList = ArrayList<String>()
 
     lateinit var mcontext: Context
 
-    class CountryHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class CHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     init {
-        countryFilterList = countryList
+        FilterList = pList
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):  ViewHolder{
@@ -34,12 +34,12 @@ class RecyclerView_Adapter(private var countryList: ArrayList<String>) :
     }
 
     override fun getItemCount(): Int {
-        return countryFilterList.size
+        return FilterList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.itemTitle.text = countryFilterList[position]
+        holder.itemTitle.text = FilterList[position]
     }
 
     class ViewHolder(itemView: PlantadapterBinding) : RecyclerView.ViewHolder(itemView.root){
@@ -52,24 +52,24 @@ class RecyclerView_Adapter(private var countryList: ArrayList<String>) :
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charSearch = constraint.toString()
                 if (charSearch.isEmpty()) {
-                    countryFilterList = countryList
+                    FilterList = pList
                 } else {
                     val resultList = ArrayList<String>()
-                    for (row in countryList) {
+                    for (row in pList) {
                         if (row.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
                             resultList.add(row)
                         }
                     }
-                    countryFilterList = resultList
+                    FilterList = resultList
                 }
                 val filterResults = FilterResults()
-                filterResults.values = countryFilterList
+                filterResults.values = FilterList
                 return filterResults
             }
 
             @Suppress("UNCHECKED_CAST")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                countryFilterList = results?.values as ArrayList<String>
+                FilterList = results?.values as ArrayList<String>
                 notifyDataSetChanged()
             }
 

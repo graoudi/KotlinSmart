@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import fr.isen.kenza.smartgreen.databinding.ActivityRegisterBinding
 
+//activite pour s'enregistrer en utilisant firebase
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {

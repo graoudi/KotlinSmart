@@ -1,9 +1,8 @@
-package fr.isen.kenza.smartgreen
+package fr.isen.kenza.smartgreen.bluetooth
 
 import android.Manifest
 import android.app.Activity
 import android.bluetooth.BluetoothAdapter
-import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothManager
 import android.bluetooth.le.BluetoothLeScanner
 import android.bluetooth.le.ScanCallback
@@ -19,6 +18,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import fr.isen.kenza.smartgreen.R
 import fr.isen.kenza.smartgreen.databinding.ActivityScanBinding
 
 class ScanActivity : AppCompatActivity() {
@@ -42,6 +42,7 @@ class ScanActivity : AppCompatActivity() {
 
         startBLEifPossible()
         isDeviceHasBLESupport()
+        //bouton pour demarrer le scan
 
         binding.playButton.setOnClickListener{
             togglePlayPauseAction()
@@ -52,6 +53,7 @@ class ScanActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    //autorisation de la connexion bluetooth
     private fun startBLEifPossible() {
 
         val deniedPermissions = permissionDeniedList.toTypedArray()
@@ -70,7 +72,7 @@ class ScanActivity : AppCompatActivity() {
                 Manifest.permission.ACCESS_FINE_LOCATION)
                     != PackageManager.PERMISSION_GRANTED -> {
                 ActivityCompat.requestPermissions( this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                    REQUEST_PERMISSION_LOCATION)
+                        REQUEST_PERMISSION_LOCATION)
             }
             else -> {
                 // youpi on peut faire de ble
@@ -80,7 +82,7 @@ class ScanActivity : AppCompatActivity() {
         }
     }
 
-
+//scan le ble
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun scanLeDevice() {
         bluetoothLeScanner?.let { scanner ->

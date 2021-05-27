@@ -14,6 +14,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //redirection vers le bon layout
         binding = fr.isen.kenza.smartgreen.databinding.ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -22,6 +23,8 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
 
         }
+        //clique sur le bouton puis entre les donnes
+        //utilisation base de donnee firebase
         binding.btnLogin.setOnClickListener{
 
             when{

@@ -1,4 +1,4 @@
-package fr.isen.kenza.smartgreen
+package fr.isen.kenza.smartgreen.plante
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -24,7 +24,7 @@ class PlantAdapter(private var titles: List<String>,
     override fun getItemCount(): Int {
         return titles.size
     }
-
+//associe la layout au code
     class ViewHolder(itemView: PlantadapterBinding) : RecyclerView.ViewHolder(itemView.root){
     val itemTitle: TextView = itemView.plantName
         val itemDetail: TextView= itemView.plantDetail

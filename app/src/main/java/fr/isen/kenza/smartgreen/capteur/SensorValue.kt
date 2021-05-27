@@ -1,4 +1,4 @@
-package fr.isen.kenza.smartgreen
+package fr.isen.kenza.smartgreen.capteur
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,10 +7,10 @@ import android.widget.SearchView
 import fr.isen.kenza.smartgreen.databinding.ActivityHomeBinding
 import fr.isen.kenza.smartgreen.databinding.ActivityNeedBinding
 
-class NeedActivity : AppCompatActivity() {
+class SensorValue : AppCompatActivity() {
     private lateinit var binding: ActivityNeedBinding
     private var imagesList = mutableListOf<Int>()
-
+//tableaux de valeur
     var humidite  = arrayOf("50%", "60%", "70%")
     var temperature  = arrayOf("15°C", "18°C", "20°C")
     var lumiere  = arrayOf("200Lx", "300Lx", "150Lx")

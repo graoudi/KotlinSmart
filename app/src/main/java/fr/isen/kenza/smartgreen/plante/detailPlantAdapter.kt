@@ -1,4 +1,4 @@
-package fr.isen.kenza.smartgreen
+package fr.isen.kenza.smartgreen.plante
 
 
 import android.app.AlertDialog
@@ -18,18 +18,21 @@ import com.thoughtbot.expandablerecyclerview.ExpandableRecyclerViewAdapter
 import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup
 import com.thoughtbot.expandablerecyclerview.viewholders.ChildViewHolder
 import com.thoughtbot.expandablerecyclerview.viewholders.GroupViewHolder
+import fr.isen.kenza.smartgreen.R
+import fr.isen.kenza.smartgreen.bluetooth.BLEService
 
+//adapter pour expandable
 class DetailBleAdapter(
-    private val gatt: BluetoothGatt?,
-    private val serviceList: MutableList<BLEService>,
-    private val context: Context
+        private val gatt: BluetoothGatt?,
+        private val serviceList: MutableList<BLEService>,
+        private val context: Context
 ) :
     ExpandableRecyclerViewAdapter<DetailBleAdapter.ServiceViewHolder, DetailBleAdapter.CharacteristicViewHolder>(
         serviceList
     ) {
     private var enabled : Boolean = false
     class ServiceViewHolder(itemView: View) : GroupViewHolder(itemView) {
-
+//associe la layout au code
         val serviceName: TextView = itemView.findViewById(R.id.nomParent)
         val serviceUUID: TextView = itemView.findViewById(R.id.uuidParent)
 
@@ -50,32 +53,33 @@ class DetailBleAdapter(
         val characteristicWriteAction: Button = itemView.findViewById(R.id.buttonEcriture)
         val characteristicNotifyAction: Button = itemView.findViewById(R.id.buttonNotify)
     }
-
+//cellule parent
     override fun onCreateGroupViewHolder(parent: ViewGroup, viewType: Int): ServiceViewHolder =
         ServiceViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.cell_parent, //correpond au parent, expandable de base
-                parent,
-                false
-            )
+                LayoutInflater.from(parent.context).inflate(
+                        R.layout.cell_parent, //correpond au parent, expandable de base
+                        parent,
+                        false
+                )
         )
-
+//cellule enfant
     override fun onCreateChildViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): CharacteristicViewHolder =
         CharacteristicViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.cell_enfant, //correspond au cell enfant, info en depliant l'expandable
-                parent,
-                false
-            )
+                LayoutInflater.from(parent.context).inflate(
+                        R.layout.cell_enfant, //correspond au cell enfant, info en depliant l'expandable
+                        parent,
+                        false
+                )
         )
 
+    //permet de lire/ecrire/notifier les valeurs
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
     override fun onBindChildViewHolder(
-        holder: CharacteristicViewHolder, flatPosition: Int, group: ExpandableGroup<*>,
-        childIndex: Int
+            holder: CharacteristicViewHolder, flatPosition: Int, group: ExpandableGroup<*>,
+            childIndex: Int
     ) {
         val characteristic: BluetoothGattCharacteristic = (group as BLEService).items[childIndex]
         val title = BleUuidAttribut.getBLEAttributeFromUUID(group.title).title
@@ -95,9 +99,10 @@ class DetailBleAdapter(
         if (proprieties(characteristic.properties).contains("Notifier")) {
             holder.characteristicNotifyAction.visibility = View.VISIBLE
         }
-
+//clique pour faire une action de type ecrite/lire/notifier
         holder.characteristicProperties.text = "propriétés : ${proprieties(characteristic.properties)}"
 
+        //fenetre de dialogue pour ecrire une valeur
         holder.characteristicWriteAction.setOnClickListener {
             val alertDialog = AlertDialog.Builder(context)
             val editView = View.inflate(context, R.layout.popupecriture, null)
@@ -171,6 +176,7 @@ class DetailBleAdapter(
 
 
     }
+    //format des valeurs
     private fun byteArrayToHexString(array: ByteArray): String {
         val result = StringBuilder(array.size * 2)
         for ( byte in array ) {
@@ -182,8 +188,8 @@ class DetailBleAdapter(
     }
 
     override fun onBindGroupViewHolder(
-        holder: ServiceViewHolder, flatPosition: Int,
-        group: ExpandableGroup<*>
+            holder: ServiceViewHolder, flatPosition: Int,
+            group: ExpandableGroup<*>
     ) {
         val title = BleUuidAttribut.getBLEAttributeFromUUID(group.title).title
         holder.serviceName.text = title

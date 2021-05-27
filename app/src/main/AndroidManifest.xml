@@ -22,14 +22,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartGreen">
-        <activity android:name=".NeedActivity"></activity>
-        <activity android:name=".HumidityActivity" />
-        <activity android:name=".TemperatureActivity" />
-        <activity android:name=".SensorActivity" />
-        <activity android:name=".AutomaticActivity" />
-        <activity android:name=".PlantActivity" />
-        <activity android:name=".DetailBleActivity" />
-        <activity android:name=".ScanActivity" />
+        <activity android:name=".capteur.SensorValue"></activity>
+        <activity android:name=".capteur.HumidityActivity" />
+        <activity android:name=".capteur.TemperatureActivity" />
+        <activity android:name=".capteur.SensorActivity" />
+        <activity android:name=".capteur.AutomaticActivity" />
+        <activity android:name=".plante.PlantActivity" />
+        <activity android:name=".bluetooth.DetailBleActivity" />
+        <activity android:name=".bluetooth.ScanActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

@@ -1,15 +1,16 @@
-package fr.isen.kenza.smartgreen
+package fr.isen.kenza.smartgreen.capteur
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import fr.isen.kenza.smartgreen.databinding.ActivityAutomaticBinding
-import fr.isen.kenza.smartgreen.databinding.ActivityHomeBinding
 
 class AutomaticActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAutomaticBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //redirection vers les activités après l'appuie sur images
         binding = ActivityAutomaticBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
